@@ -1,0 +1,6 @@
+routeslarda delete 
+update gibi routeslarda dinamik olanın üstündeolmalı yoksa hiç bir zaman çalışmaz
+
+products/1532
+products/delete
+products/update örnek 

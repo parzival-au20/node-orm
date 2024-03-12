@@ -1,0 +1,38 @@
+extends ../layout/main-layout.pug
+
+block styles
+    link(rel='stylesheet', href='/css/forms.css')
+block content
+    form(action='/admin/products', method='post')
+
+        input(type="hidden" name="id" value=`${product.id}`)
+
+        .form-group.row
+            label.col-sm-2.col-form-label(for='productName') Product Name
+            .col-sm-10
+              input#Name.form-control(type='text', name='name',  value=`${product.name}`, style='margin-bottom: 10px;')
+        .form-group.row
+            label.col-sm-2.col-form-label(for='price') Price
+            .col-sm-10
+              input#price.form-control(type='text', name='price',  value=`${product.price}`, style='margin-bottom: 10px;')
+        .form-group.row
+            label.col-sm-2.col-form-label(for='imageUrl') Image
+            .col-sm-10
+              input#image.form-control(type='text', name='imageUrl',  value=`${product.imageUrl}`, style='margin-bottom: 10px;')
+        
+        .form-group.row
+            label.col-sm-2.col-form-label(for='categoryid') Category
+            .col-sm-10
+              select#categoryid.form-control(name='categoryid', style='margin-bottom: 10px;')
+                  option(value="-1") Select Category
+                  each category in categories
+                      option(value=`${category.id}` selected=category.id===product.categoryId) #{category.name}
+                      
+        .form-group.row
+            label.col-sm-2.col-form-label(for='description') Description
+            .col-sm-10
+              textarea.form-control(name='description',cols="30",rows="10", style='margin-bottom: 10px;') #{product.description}
+
+        .form-group.row
+            .col-sm-10.offset-sm-2(style='margin-top: 1%; margin-left: 84%;')
+              input.btn.btn-primary(type='submit', value='Save Product')
